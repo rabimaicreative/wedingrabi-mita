@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Allura&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wedding Rabi & Mita</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .section-with-bg {
+      position: relative;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      color: white;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .section-with-bg::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5); /* overlay transparan */
+      backdrop-filter: blur(3px); /* efek blur */
+      z-index: 0;
+    }
+
+    .section-with-bg > * {
+      position: relative;
+      z-index: 2;
+    }
+
+    .gallery-slider {
+      position: relative;
+    }
+
+    .gallery-slide {
+      display: none;
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    .gallery-slide.active {
+      display: block;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .gallery-controls {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .gallery-controls button {
+      padding: 0.5rem 1.2rem;
+      font-size: 1.5rem;
+      background-color: #d4af37;
+      border: none;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .gallery-controls button:hover {
+      background-color: #b5952f;
+    }
+
+    .social-footer {
+      margin-top: 4rem;
+      text-align: center;
+    }
+
+    .social-icons a {
+      margin: 0 1rem;
+      text-decoration: none;
+      color: #d4af37;
+      font-weight: bold;
+    }
+
+    .social-icons a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+<audio id="bg-music" autoplay loop>
+  <source src="musik/bermuara.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+<body class="no-scroll">
+
+
+<!-- Hero -->
+  <section id="hero" class="section section-with-bg" style="background-image: url('img/Sampul%20Depan.jpg');">
+  <div class="hero-content">
+    <h1>
+      <span class="wedding-title">The Wedding</span><br>
+      <span class="of-text">OF</span>
+    </h1>
+    <p class="couple-names">Rabi & Mita</p>
+    <p>Kepada Yth Bapak/Ibu/Saudara/i:</p>
+    <p><span id="guestName">Tamu Undangan</span></p>
+    <a href="#pria" class="button-gold">Lihat Undangan</a>
+  </div>
+  </section>
+
+
+
+  
+ <!-- Info Pernikahan Gabung: Pembuka + Detail Acara + Penutup -->
+<section id="pria" class="section-pria">
+  <!-- Background Gambar -->
+  <div class="bg-pria"></div>
+
+  <!-- Konten di atas background -->
+  <div class="content-pria">
+    <h2 class="great-vibes">Om Swastyastu</h2>
+    <p>Atas Asung Kerta Wara Nugraha, Ida Sang Hyang Widhi Wasa/ Tuhan Yang Maha Esa, kami bermaksud menyelenggarakan Upacara Pawiwahan/ Pernikahan Putra-putri kami.</p>
+
+    <div class="bride-groom-info">
+      <img src="img/rabi1.jpg" alt="Rabi" class="foto-pria">
+      <h3 class="kugile-font">Ketut Rabi Guna Agus Santika S.I.Kom</h3>
+      <p> Anak ke empat dari Pasangan</p>
+      <p>Bapak Ketut Artaya</p>
+      <p class="great-vibes" style="margin: 0.5rem 0;">&</p>
+      <p>Ibu Luh Pingin</p>
+      <p>Br. Dajan Margi, Desa Silangjana, Buleleng</p>
+    </div>
+  </div>
+</section>
+
+
+
+<section id="wanita" class="section-wanita">
+  <!-- Background -->
+  <div class="bg-wanita"></div>
+
+  <!-- Konten di atas background -->
+  <div class="content-wanita">
+    <div class="bride-groom-info">
+      <p class="simbol-and">&</p> <!-- Simbol & besar di atas -->
+      <img src="img/mita1.jpeg" alt="Mita" class="foto-wanita">
+      <h3 class="kugile-font">Putu Mita Damayanti S.I.Kom</h3>
+      <p> Anak Pertama dari Pasangan</p>
+      <p>Bapak Nyoman</p>
+      <p class="great-vibes" style="margin: 0.5rem 0;">&</p>
+      <p>Ibu Luh Sari</p>
+      <p>Br. Dinas Batupulu, Desa Panji Anom, Buleleng</p>
+    </div>
+  </div>
+</section>
+  
+
+
+<section id="acara" class="section section-with-bg" style="background-image: url('img/bg%20baru.jpg');">
+  <div class="acara-wrapper">
+    <h2 class="great-vibes">Detail Acara</h2>
+    <h3>Resepsi Pernikahan</h3>
+    
+    <p>
+      <strong>Hari/Tanggal:</strong> Minggu, 20 Juli 2025<br>
+      <strong>Waktu:</strong> 11.00 - 14.00 WITA<br>
+      <strong>Lokasi:</strong> Br. Dinas Dajan Margi, Desa Silangjana, Buleleng, Bali
+    </p>
+
+    <div class="map-container">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15797.066900362743!2d115.1500479!3d-8.1758623!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd18fabfccd64b1%3A0xe440e3d75cd134f2!2s%22Siwa%22%20Taru%20Abadi%20Meubel!5e0!3m2!1sid!2sid!4v1749788341303!5m2!1sid!2sid"
+        width="100%" height="300" style="border:0;" allowfullscreen loading="lazy">
+      </iframe>
+    </div>
+
+    <div class="tombol-lokasi">
+      <a href="https://maps.app.goo.gl/r22w63UkphXq52vD6" target="_blank" class="btn-maps">
+        Lihat Lokasi
+      </a>
+    </div>
+  </div>
+</section>
+
+
+
+
+  <!-- Coundtdown -->
+<section id="countdown">
+  <h2>Menuju Hari Istimewa Kami</h2> 
+  <h2>dan kami berharap anda menjadi bagian dari hari istimewa kami</h2>
+  <div class="countdown-timer">
+    <div class="countdown-item">
+      <span id="days">00</span>
+      <label>Hari</label>
+    </div>
+    <div class="countdown-item">
+      <span id="hours">00</span>
+      <label>Jam</label>
+    </div>
+    <div class="countdown-item">
+      <span id="minutes">00</span>
+      <label>Menit</label>
+    </div>
+    <div class="countdown-item">
+      <span id="seconds">00</span>
+      <label>Detik</label>
+    </div>
+  </div>
+</section>
+
+
+ <!-- Galeri -->
+<section id="gallery" class="section section-with-bg" style="background-image: url('img/bg%20baru.jpg');">
+    <h2 class="great-vibes">Our Galeri</h2>
+
+    <div class="gallery-slider">
+      <div class="gallery-slide active">
+        <div class="gallery-grid">
+          <img src="img/galeri1.jpeg" alt="Foto 1">
+          <img src="img/galeri2.jpeg" alt="Foto 2">
+          <img src="img/galeri3.jpeg" alt="Foto 3">
+          <img src="img/galeri4.jpeg" alt="Foto 4">
+        </div>
+      </div>
+      <div class="gallery-slide">
+        <div class="gallery-grid">
+          <img src="img/galeri5.jpeg" alt="Foto 5">
+          <img src="img/galeri6.jpeg" alt="Foto 6">
+          <img src="img/galeri7.jpeg" alt="Foto 7">
+          <img src="img/galeri8.jpg" alt="Foto 8">
+        </div>
+      </div>
+    </div>
+
+    <div class="gallery-controls">
+      <button onclick="prevSlide()">❮</button>
+      <button onclick="nextSlide()">❯</button>
+    </div>
+  </section>
+
+
+
+   <!-- kata mutiara -->
+  <section id="quote" class="section section-with-bg" style="background-image: url('img/images.jpeg'); text-align: center;">
+  <h2 class="great-vibes">Kata Mutiara</h2>
+    <blockquote style="font-style: italic; font-size: 1.3rem; max-width: 600px; margin: 0 auto;">
+    ""Saṃ gacchadhvaṃ saṃ vadadhvaṃ, saṃ vo manāṃsi jānatām."<br>“Hiduplah dalam kesatuan, berbicaralah dalam keharmonisan, satukanlah hati dan pikiran kalian." <br>(Ṛgveda X.191.2)
+  </blockquote>
+</section>
+
+  <!-- RSVP -->
+<section id="rsvp" class="section section-with-bg" style="background-image: url('img/imgs.jpg');">
+  <h2 class="great-vibes">Doa & Ucapan</h2>
+
+  <!-- Ucapan Bergantian (Gabung & Pakai class hidden) -->
+  <div id="ucapan-container" class="hidden">
+    <p id="ucapan-display"></p>
+  </div>
+
+  <!-- Form RSVP -->
+  <form id="rsvp-form">
+    <input type="text" id="nama" name="name" placeholder="Nama Anda" required>
+    <textarea id="pesan" name="message" placeholder="Ucapan untuk pengantin" required></textarea>
+    <select id="kehadiran" name="attendance" required>
+      <option value="">Apakah Anda akan hadir?</option>
+      <option value="yes">Hadir</option>
+      <option value="no">Tidak Hadir</option>
+      <option value="maybe">Ragu-ragu</option>
+    </select>
+    <button type="submit">Kirim</button>
+  </form>
+
+  <div id="guest-messages"></div>
+</section>
+
+
+
+  <!-- kado -->
+<section id="gift" class="section section-with-bg" style="background-image: url('img/bg%20baru.jpg');">
+  <h2 class="great-vibes">Kado Pernikahan</h2>
+  <p>Tanpa mengurangi rasa hormat, bagi yang ingin mengirimkan tanda kasih:</p>
+  <div style="background-color: rgba(255,255,255,0.2); padding: 1rem; border-radius: 10px; margin-top: 1rem;">
+    <p><strong>Bank BCA</strong><br>No. Rekening: 1234567890<br>a.n. Rabi & Mita</p>
+    <p><strong>Alamat Pengiriman Kado:</strong><br>Br. Dajan Margi, Desa Silangjana, Buleleng</p>
+  </div>
+</section>
+
+
+<!-- penutup -->
+<section class="closing-section-with-bg">
+  <div class="overlay"></div>
+  <div class="closing-content">
+    <img src="img/galeri1.jpeg" alt="Foto Pengantin" class="closing-photo" />
+    <div class="closing-text">
+      <p>
+        Merupakan suatu kehormatan dan kebahagiaan bagi kami<br>
+        apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu.<br>
+        Atas Kehadiran dan doa restu Bapak/Ibu/Saudara/i, kami mengucapkan terima kasih.
+      </p>
+      <h2 class="great-vibes">Om Shanti, Shanti, Shanti Om</h2>
+    </p>
+    </div>
+  </div>
+</section>
+
+  <!-- Footer -->
+<footer class="social-footer section section-with-bg" style="background-image: url('img/logobaru\ mai-01.jpg');">
+  <p>Hubungi atau ikuti kami di media sosial:</p>
+  <div class="social-icons">
+    <a href="https://instagram.com/maicreative._" target="_blank">
+      <i class="fab fa-instagram"></i> Instagram
+    </a>
+    <a href="https://wa.me/895424710697" target="_blank">
+      <i class="fab fa-whatsapp"></i> WhatsApp
+    </a>
+    <a href="https://tiktok.com/@rabirahh._" target="_blank">
+      <i class="fab fa-tiktok"></i> TikTok
+    </a>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
+

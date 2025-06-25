@@ -1,0 +1,856 @@
+html {
+  scroll-behavior: smooth;
+}
+
+
+/* --------------------------------------------------
+   Reset & Global Styles
+-------------------------------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #ffffff;
+  color: #333;
+  scroll-behavior: smooth;
+  line-height: 1.6;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@font-face {
+  font-family: 'Kugile';
+  src: url('font/Kugile_Demo.ttf') format('truetype');
+}
+
+.kugile-font {
+  font-family: 'Kugile', cursive;
+}
+
+
+.no-scroll {
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* --------------------------------------------------
+   Section Umum
+-------------------------------------------------- */
+section {
+  width: 100%;
+  min-height: 100vh;
+  padding: 4rem 2rem;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  overflow: hidden;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+section::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  backdrop-filter: blur(2px);
+  z-index: 0;
+}
+
+section > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* --------------------------------------------------
+   Hero Section
+-------------------------------------------------- */
+#hero {
+  background-image: url('img/rabi1.jpg');
+}
+
+.hero-content {
+  padding: 2rem;
+  border-radius: 12px;
+}
+
+.hero-content h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+  color: white;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
+}
+
+.invited-name,
+.countdown {
+  font-size: 1.2rem;
+  color: white;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
+}
+
+.button-gold {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: #d4af37;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  margin-top: 2rem;
+}
+
+.button-gold:hover {
+  background-color: #b5952f;
+}
+
+.wedding-title {
+  font-size: 1.6rem;
+  font-weight: normal;
+  text-transform: uppercase;
+  margin-bottom: 0.3rem;
+}
+
+.of-text {
+  font-size: 1.6rem;
+  font-weight: normal;
+  letter-spacing: 2px;
+  margin-bottom: 0.1rem;
+}
+
+.couple-names {
+  font-family: 'Allura', cursive;
+  font-size: 3.9rem;
+  color: white;
+  margin: 0.2rem 0 2rem;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.great-vibes {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2.9rem;
+}
+
+.nama-pasangan {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem; /* Atur jarak antar nama */
+}
+
+.great-vibes {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2.9rem;
+  margin: 0;
+  line-height: 1.2;
+}
+
+
+/* --------------------------------------------------
+   Mempelai pria - Elegan & Responsif
+-------------------------------------------------- */
+/* Section container */
+.section-pria {
+  position: relative;
+  min-height: 100vh;
+  padding: 4rem 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  overflow: hidden;
+}
+
+/* Background */
+.bg-pria {
+  position: absolute;
+  inset: 0;
+  background-image: url('img/imgs.jpg');
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+
+.bg-pria::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3); /* efek gelap elegan */
+  z-index: 1;
+}
+
+/* Konten di atas background */
+.content-pria {
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
+  padding: 2rem;
+  backdrop-filter: blur(1px); /* opsional */
+}
+
+/* Foto mempelai */
+.foto-pria {
+  width: 230px; /* Lebih besar */
+  border-radius: 16px;
+  margin-top: 1rem;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+}
+
+/* Font parisienne */
+.parisienne-font {
+  font-family: 'Parisienne', cursive;
+  font-size: 2.5rem;
+}
+
+.bride-groom-info h3.great-vibes {
+  font-size: 2rem;
+}
+
+.bride-groom-info p.great-vibes {
+  font-size: 2rem;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .content-pria {
+    padding: 1.5rem;
+  }
+
+  .great-vibes {
+    font-size: 1.8rem;
+  }
+
+  .bride-groom-info h3.great-vibes {
+    font-size: 2rem;
+  }
+
+  .bride-groom-info p.great-vibes {
+    font-size: 1.6rem;
+  }
+}
+
+
+/* --------------------------------------------------
+   Wedding acara - Elegan & Responsif
+-------------------------------------------------- */
+.acara-wrapper {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+  color: #fff;
+  padding: 2rem 1rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.map-container {
+  margin: 1.5rem auto;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  max-width: 1000px; /* Diperlebar dari biasanya 600-700px */
+  width: 100%; /* Tetap responsif */
+  height: 300px;
+}
+
+
+.tombol-lokasi {
+  margin-top: 1rem;
+}
+
+.btn-maps {
+  display: inline-block;
+  padding: 0.8rem 1.4rem;
+  background-color: #e0b200;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+.btn-maps:hover {
+  background-color: #c89f00;
+  transform: scale(1.05);
+}
+
+/* Font judul acara seperti nama mempelai */
+#acara h2.great-vibes {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+}
+
+#acara h3.subjudul {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+
+/* --------------------------------------------------
+   Galeri
+-------------------------------------------------- */
+body {
+  font-family: sans-serif;
+  background-color: #f7f7f7;
+  margin: 0;
+  padding: 0;
+}
+
+.section-with-bg {
+  background: #333;
+  color: white;
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+
+.gallery-grid img:hover {
+  transform: scale(1.05);
+}
+
+.gallery-slide {
+  display: none;
+}
+
+.gallery-slide.active {
+  display: block;
+}
+
+.gallery-controls {
+  margin-top: 2rem;
+}
+
+.gallery-controls button {
+  font-size: 2rem;
+  padding: 0.5rem 1rem;
+  margin: 0 0.5rem;
+  background: #d4af37;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.gallery-controls button:hover {
+  background-color: #b5952f;
+}
+
+/* --------------------------------------------------
+   RSVP
+-------------------------------------------------- */
+#rsvp {
+  background-image: url('img/mita.png');
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 2rem;
+  width: 100%;
+  max-width: 600px;
+}
+
+input, textarea, select {
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  width: 100%;
+}
+
+form button {
+  background-color: #d4af37;
+  border: none;
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+form button:hover {
+  background-color: #b5952f;
+  transform: scale(1.05);
+}
+
+/* --------------------------------------------------
+   Ucapan Tamu
+-------------------------------------------------- */
+/* Masukkan CSS ini di file style.css kamu */
+#rsvp {
+  padding: 60px 20px;
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  text-align: center;
+  position: relative;
+}
+
+#rsvp::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+#rsvp h2 {
+  font-size: 36px;
+  margin-bottom: 30px;
+  position: relative;
+  z-index: 6;
+}
+
+#rsvp-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 500px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+#rsvp-form input,
+#rsvp-form textarea,
+#rsvp-form select {
+  padding: 12px 15px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+}
+
+#rsvp-form button {
+  background-color: #f5c542;
+  color: #000;
+  padding: 12px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#rsvp-form button:hover {
+  background-color: #e0b034;
+}
+
+#ucapan-container {
+  font-size: 18px;
+  font-style: italic;
+  margin-bottom: 30px;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 20px;
+  border-radius: 12px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  z-index: 2;
+  animation: fadeIn 1s ease-in-out;
+}
+.hidden {
+  display: none !important;
+}
+
+
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --------------------------------------------------
+   Footer Sosial Media (Ukuran Kecil)
+-------------------------------------------------- */
+.social-footer {
+  text-align: center;
+  color: #000;
+  padding: 1.5rem 1rem;
+  background-color: #f5f5f5;
+}
+
+.social-icons {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column; /* Ubah dari row ke column */
+  align-items: center;
+  gap: 0.75rem;
+}
+
+
+.social-icons a {
+  background-color: #eee;
+  padding: 0.4rem 1.2rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #333;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  transition: background-color 0.3s ease;
+}
+
+
+.social-icons a:hover {
+  background-color: #d4af37;
+  color: #000;
+}
+
+.social-icons i {
+  font-size: 1rem;
+}
+
+
+/* --------------------------------------------------
+   Responsive
+-------------------------------------------------- */
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .gallery-grid img {
+    height: 180px;
+  }
+}
+
+/* --------------------------------------------------
+   Mempelai Wanita Section
+-------------------------------------------------- */
+/* Section container */
+.section-wanita {
+  position: relative;
+  min-height: 100vh;
+  padding: 4rem 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  overflow: hidden;
+}
+
+/* Background */
+.bg-wanita {
+  position: absolute;
+  inset: 0;
+  background-image: url('img/images.jpeg');
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+
+/* Konten di atas background */
+.content-wanita {
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
+  padding: 2rem;
+  backdrop-filter: blur(1px);
+}
+
+/* Foto mempelai - sama dengan pria */
+.foto-wanita {
+  width: 230px;
+  border-radius: 12px;
+  margin-top: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Simbol & besar */
+.simbol-and {
+  font-family: 'Great Vibes', cursive;
+  font-size: 7rem;
+  line-height: 1;
+  margin-bottom: -1rem;
+  margin-top: 0;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+/* Font Great Vibes umum */
+.great-vibes {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2.2rem;
+}
+
+.bride-groom-info h3.great-vibes {
+  font-size: 2.5rem;
+}
+
+.bride-groom-info p.great-vibes {
+  font-size: 2rem;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .content-wanita {
+    padding: 1.5rem;
+  }
+
+  .great-vibes {
+    font-size: 1.8rem;
+  }
+
+  .bride-groom-info h3.great-vibes {
+    font-size: 2rem;
+  }
+
+  .bride-groom-info p.great-vibes {
+    font-size: 1.6rem;
+  }
+
+  .simbol-and {
+    font-size: 3rem;
+  }
+}
+
+/* --------------------------------------------------
+   Countdown Timer (Kotak Lebih Kecil)
+-------------------------------------------------- */
+#countdown {
+  background-image: url('img/Sampul%20Depan.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: 3rem 1rem; /* sedikit dikurangi */
+  text-align: center;
+  color: #fff;
+}
+
+.countdown-timer {
+  display: flex;
+  gap: 1rem; /* jarak antar kotak diperkecil */
+  justify-content: center;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.countdown-item {
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 70px; /* diperkecil dari 100px */
+  height: 70px; /* diperkecil dari 100px */
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.countdown-item span {
+  font-size: 1.2rem; /* dari 1.8rem */
+  font-weight: bold;
+}
+
+.countdown-item label {
+  font-size: 0.7rem; /* dari 0.9rem */
+  margin-top: 0.1rem;
+}
+
+
+/* --------------------------------------------------
+   Kata Mutiara
+-------------------------------------------------- */
+#wisdom {
+  background-image: url('img/rabi.webp');
+}
+
+#wisdom blockquote {
+  font-size: 1.5rem;
+  font-style: italic;
+  color: #fefefe;
+  max-width: 700px;
+  margin: 2rem auto;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.4);
+}
+
+/* --------------------------------------------------
+   Kado Pernikahan
+-------------------------------------------------- */
+#gift {
+  background-color: #fff;
+  color: #ffffff;
+}
+
+#gift h2 {
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+.gift-info {
+  background-color: #000000;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(255, 255, 255, 0.1);
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.gift-info p {
+  margin-bottom: 0.8rem;
+  font-size: 1rem;
+  color: #ffffff;
+}
+
+.gift-info .copy-button {
+  background-color: #d4af37;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.gift-info .copy-button:hover {
+  background-color: #b5952f;
+}
+
+/* --------------------------------------------------
+   penutup
+-------------------------------------------------- */
+.closing-section-with-bg {
+  position: relative;
+  background-image: url('img/sampul depan.jpg'); /* jangan pakai backslash */
+  background-size: cover;
+  background-position: center;
+  padding: 80px 20px;
+  color: #fff;
+  text-align: center;
+  overflow: hidden;
+}
+
+.closing-section-with-bg .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4); 
+  backdrop-filter: blur(2px);    
+  z-index: 1;
+}
+
+.closing-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.closing-photo {
+  width: 100%;
+  max-width: 600px;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.closing-text p {
+  font-size: 1.2rem;
+  margin-bottom: 1em;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.closing-thankyou {
+  font-weight: bold;
+  font-style: italic;
+  color: #f0f0f0;
+}
+
+/* Responsif */
+@media (max-width: 768px) {
+  .closing-section-with-bg {
+    padding: 60px 15px;
+  }
+
+  .closing-photo {
+    width: 100%;
+    height: auto;
+  }
+
+  .closing-text p {
+    font-size: 1rem;
+  }
+}
+
+
+
+.music-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 9999;
+  background: rgba(255, 255, 255, 0.2); /* transparan samar */
+  border: none;
+  border-radius: 50%;
+  font-size: 1.1rem;
+  padding: 0.5rem;
+  cursor: pointer;
+  color: #fff;
+  backdrop-filter: blur(4px);
+  transition: all 0.3s ease;
+}
+
+.music-toggle:hover {
+  background: rgba(255, 255, 255, 0.4);
+  color: #000;
+}
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s ease-out;
+}
+
+.fade-up.show {
+  opacity: 1;
+  transform: translateY(0);
+}
