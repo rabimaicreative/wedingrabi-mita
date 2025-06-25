@@ -59,15 +59,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
 const rsvpForm = document.getElementById("rsvp-form");
 const endpoint = "https://script.google.com/macros/s/AKfycbzK9HAaiOGrIR1nTs_Rbp0Nsnb10owGwk21kSkp3a4dpLH9mlH1XIEyCV1p8KRCOzNw/exec";
- // ganti dengan URL kamu
 
 if (rsvpForm) {
   rsvpForm.addEventListener("submit", function (e) {
     e.preventDefault();
 
-    const name = this.name.value.trim();
-    const message = this.message.value.trim();
-    const attendance = this.attendance.value;
+    const name = document.getElementById("nama").value.trim();
+    const message = document.getElementById("pesan").value.trim();
+    const attendance = document.getElementById("kehadiran").value;
 
     if (name && message && attendance) {
       fetch(endpoint, {
@@ -84,7 +83,7 @@ if (rsvpForm) {
         .then(response => response.json())
         .then(data => {
           alert("Terima kasih! Ucapan Anda sudah terkirim.");
-          this.reset();
+          rsvpForm.reset();
         })
         .catch(err => {
           alert("Gagal mengirim. Coba lagi nanti.");
@@ -93,6 +92,7 @@ if (rsvpForm) {
     }
   });
 }
+
 
 
   // === Smooth Scroll untuk Anchor Link ===
