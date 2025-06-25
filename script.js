@@ -58,41 +58,35 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 const rsvpForm = document.getElementById("rsvp-form");
-const endpoint = "https://script.google.com/macros/s/AKfycbzK9HAaiOGrIR1nTs_Rbp0Nsnb10owGwk21kSkp3a4dpLH9mlH1XIEyCV1p8KRCOzNw/exec";
+const endpoint = "https://script.google.com/macros/s/AKfycbxJbkCRDaH69FTKol5W2bMo7yblo0GYcAtswkUz_CVzyCF2DQX0Xyqm3NfMJFzTbAg/exec"; // url terbaru
 
-if (rsvpForm) {
-  rsvpForm.addEventListener("submit", function (e) {
-    e.preventDefault();
+rsvpForm.addEventListener("submit", function(e) {
+  e.preventDefault();
 
-    const name = document.getElementById("nama").value.trim();
-    const message = document.getElementById("pesan").value.trim();
-    const attendance = document.getElementById("kehadiran").value;
+  const name = document.getElementById("nama").value.trim();
+  const message = document.getElementById("pesan").value.trim();
+  const attendance = document.getElementById("kehadiran").value;
 
-    if (name && message && attendance) {
-      const params = new URLSearchParams({
-        name,
-        message,
-        attendance
+  if (name && message && attendance) {
+    const params = new URLSearchParams({ name, message, attendance });
+
+    fetch(`${endpoint}?${params.toString()}`)
+      .then(res => res.json())
+      .then(data => {
+        if (data.result === "success") {
+          alert("🎉 Ucapan berhasil dikirim!");
+          rsvpForm.reset();
+        } else {
+          alert("❌ Gagal mengirim: " + data.message);
+          console.error(data.message);
+        }
+      })
+      .catch(err => {
+        alert("❌ Gagal mengirim. Coba lagi nanti.");
+        console.error(err);
       });
-
-      fetch(`${endpoint}?${params.toString()}`)
-        .then(response => response.json())
-        .then(data => {
-          if (data.result === "success") {
-            alert("Terima kasih! Ucapan Anda sudah terkirim.");
-            rsvpForm.reset();
-          } else {
-            alert("Gagal mengirim. Coba lagi nanti.");
-            console.error(data.message);
-          }
-        })
-        .catch(err => {
-          alert("Gagal mengirim. Coba lagi nanti.");
-          console.error(err);
-        });
-    }
-  });
-}
+  }
+});
 
 
 
