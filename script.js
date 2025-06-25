@@ -69,21 +69,22 @@ if (rsvpForm) {
     const attendance = document.getElementById("kehadiran").value;
 
     if (name && message && attendance) {
-      fetch(endpoint, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          name,
-          message,
-          attendance
-        })
-      })
+      const params = new URLSearchParams({
+        name,
+        message,
+        attendance
+      });
+
+      fetch(`${endpoint}?${params.toString()}`)
         .then(response => response.json())
         .then(data => {
-          alert("Terima kasih! Ucapan Anda sudah terkirim.");
-          rsvpForm.reset();
+          if (data.result === "success") {
+            alert("Terima kasih! Ucapan Anda sudah terkirim.");
+            rsvpForm.reset();
+          } else {
+            alert("Gagal mengirim. Coba lagi nanti.");
+            console.error(data.message);
+          }
         })
         .catch(err => {
           alert("Gagal mengirim. Coba lagi nanti.");
@@ -92,6 +93,7 @@ if (rsvpForm) {
     }
   });
 }
+
 
 
 
