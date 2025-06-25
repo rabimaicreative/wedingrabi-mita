@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 const rsvpForm = document.getElementById("rsvp-form");
-const endpoint = "https://script.google.com/macros/s/AKfycbxJbkCRDaH69FTKol5W2bMo7yblo0GYcAtswkUz_CVzyCF2DQX0Xyqm3NfMJFzTbAg/exec"; // url terbaru
+const endpoint = "https://script.google.com/macros/s/AKfycbzK9HAaiOGrIR1nTs_Rbp0Nsnb10owGwk21kSkp3a4dpLH9mlH1XIEyCV1p8KRCOzNw/exec"; // url terbaru
 
 rsvpForm.addEventListener("submit", function(e) {
   e.preventDefault();
@@ -67,26 +67,30 @@ rsvpForm.addEventListener("submit", function(e) {
   const message = document.getElementById("pesan").value.trim();
   const attendance = document.getElementById("kehadiran").value;
 
-  if (name && message && attendance) {
-    const params = new URLSearchParams({ name, message, attendance });
-
-    fetch(`${endpoint}?${params.toString()}`)
-      .then(res => res.json())
-      .then(data => {
-        if (data.result === "success") {
-          alert("🎉 Ucapan berhasil dikirim!");
-          rsvpForm.reset();
-        } else {
-          alert("❌ Gagal mengirim: " + data.message);
-          console.error(data.message);
-        }
+   if (name && message && attendance) {
+      fetch(endpoint, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ name, message, attendance })
       })
-      .catch(err => {
-        alert("❌ Gagal mengirim. Coba lagi nanti.");
-        console.error(err);
-      });
-  }
-});
+        .then(response => response.json())
+        .then(data => {
+          if (data.result === "success") {
+            alert("Terima kasih! Ucapan Anda sudah terkirim.");
+            rsvpForm.reset();
+          } else {
+            alert("Gagal: " + data.message);
+            console.error(data);
+          }
+        })
+        .catch(err => {
+          alert("Gagal mengirim. Coba lagi nanti.");
+          console.error(err);
+        });
+    }
+  });
 
 
 
