@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 const rsvpForm = document.getElementById("rsvp-form");
-const endpoint = "https://script.google.com/macros/s/AKfycbzK9HAaiOGrIR1nTs_Rbp0Nsnb10owGwk21kSkp3a4dpLH9mlH1XIEyCV1p8KRCOzNw/exec"; // url terbaru
+const endpoint = "https://script.google.com/macros/s/AKfycbwQNwIWlh7zSV5Ihl2HEgyXC0QnJ7NpwGeyjKo4_momZclJo8q3tv6PNiZy3CWaEK_W/exec"; // url terbaru
 
 rsvpForm.addEventListener("submit", function(e) {
   e.preventDefault();
