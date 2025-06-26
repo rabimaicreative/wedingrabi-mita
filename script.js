@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 const rsvpForm = document.getElementById("rsvp-form");
-const endpoint = "https://script.google.com/macros/s/AKfycbwQNwIWlh7zSV5Ihl2HEgyXC0QnJ7NpwGeyjKo4_momZclJo8q3tv6PNiZy3CWaEK_W/exec"; // url terbaru
+const endpoint = "https://script.google.com/macros/s/AKfycbwQNwIWlh7zSV5Ihl2HEgyXC0QnJ7NpwGeyjKo4_momZclJo8q3tv6PNiZy3CWaEK_W/exec";
 
 rsvpForm.addEventListener("submit", function(e) {
   e.preventDefault();
@@ -67,30 +67,33 @@ rsvpForm.addEventListener("submit", function(e) {
   const message = document.getElementById("pesan").value.trim();
   const attendance = document.getElementById("kehadiran").value;
 
-   if (name && message && attendance) {
-      fetch(endpoint, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ name, message, attendance })
-      })
-        .then(response => response.json())
-        .then(data => {
-          if (data.result === "success") {
-            alert("Terima kasih! Ucapan Anda sudah terkirim.");
-            rsvpForm.reset();
-          } else {
-            alert("Gagal: " + data.message);
-            console.error(data);
-          }
-        })
-        .catch(err => {
-          alert("Gagal mengirim. Coba lagi nanti.");
-          console.error(err);
-        });
-    }
-  });
+  if (name && message && attendance) {
+    fetch(endpoint, {
+      method: "POST",
+      headers: {
+        "Content-Type": "text/plain;charset=utf-8" // ✅ untuk hindari CORS preflight
+      },
+      body: JSON.stringify({ name, message, attendance })
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.result === "success") {
+        alert("Terima kasih! Ucapan Anda sudah terkirim.");
+        rsvpForm.reset();
+      } else {
+        alert("Gagal: " + data.message);
+        console.error("Response error:", data);
+      }
+    })
+    .catch(err => {
+      alert("Gagal mengirim. Coba lagi nanti.");
+      console.error("Fetch error:", err);
+    });
+  } else {
+    alert("Mohon lengkapi semua kolom sebelum mengirim.");
+  }
+});
+
 
 
 
