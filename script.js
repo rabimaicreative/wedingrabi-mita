@@ -58,7 +58,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 const rsvpForm = document.getElementById("rsvp-form");
-const endpoint = "https://script.google.com/macros/s/AKfycbwQNwIWlh7zSV5Ihl2HEgyXC0QnJ7NpwGeyjKo4_momZclJo8q3tv6PNiZy3CWaEK_W/exec";
+const endpoint = "https://script.google.com/macros/s/AKfycbwyITmQSQJIiMSgTMVwqLKV4MOOHjvkhpGTPG-odkyMCHk1zvEy-z7RueZjRB8-Xb_w/exec";
+
 
 rsvpForm.addEventListener("submit", function(e) {
   e.preventDefault();
@@ -71,7 +72,7 @@ rsvpForm.addEventListener("submit", function(e) {
     fetch(endpoint, {
       method: "POST",
       headers: {
-        "Content-Type": "text/plain;charset=utf-8" // ✅ untuk hindari CORS preflight
+        "Content-Type": "application/json" // ✅ untuk hindari CORS preflight
       },
       body: JSON.stringify({ name, message, attendance })
     })
