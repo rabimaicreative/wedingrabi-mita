@@ -57,46 +57,89 @@ document.addEventListener('DOMContentLoaded', function () {
   document.body.addEventListener('click', playMusic, { once: true });
 
 
-const rsvpForm = document.getElementById("rsvp-form");
-const endpoint = "https://script.google.com/macros/s/AKfycbwyITmQSQJIiMSgTMVwqLKV4MOOHjvkhpGTPG-odkyMCHk1zvEy-z7RueZjRB8-Xb_w/exec";
+  // === Rsvp ===
 
 
-rsvpForm.addEventListener("submit", function(e) {
-  e.preventDefault();
 
-  const name = document.getElementById("nama").value.trim();
-  const message = document.getElementById("pesan").value.trim();
-  const attendance = document.getElementById("kehadiran").value;
+window.addEventListener("load", function() {
+  const form = document.getElementById('rsvp-form');
+  const guestMessagesContainer = document.getElementById('guest-messages');
+  const sheetURL = 'https://opensheet.vercel.app/1wqgoT2hOzxHSfQ3gFiEwJ4XjBQ8zHC7TxW8kMTts-qc/Sheet1';
 
-  if (name && message && attendance) {
-    fetch(endpoint, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json" // ✅ untuk hindari CORS preflight
-      },
-      body: JSON.stringify({ name, message, attendance })
+  form.addEventListener("submit", function(e) {
+    e.preventDefault(); // ⛔️ Penting untuk cegah redirect!
+    
+    const data = new FormData(form);
+    const action = form.action;
+
+    fetch(action, {
+      method: 'POST',
+      body: data,
     })
-    .then(response => response.json())
+    .then(() => {
+      alert("Ucapan berhasil dikirim!");
+      form.reset();
+      setTimeout(loadGuestMessages, 1000);
+    })
+    .catch(() => {
+      alert("Terjadi kesalahan. Silakan coba lagi.");
+    });
+
+    return false; // 🔒 Tambahan jaga-jaga agar form tidak kirim default
+  });
+
+  function loadGuestMessages() {
+  fetch(sheetURL)
+    .then(res => res.json())
     .then(data => {
-      if (data.result === "success") {
-        alert("Terima kasih! Ucapan Anda sudah terkirim.");
-        rsvpForm.reset();
-      } else {
-        alert("Gagal: " + data.message);
-        console.error("Response error:", data);
-      }
+      guestMessagesContainer.innerHTML = '';
+      rotatingData = data.reverse(); // simpan dan balik data
+      rotatingIndex = 0;
+      rotateUcapan();
+
+      rotatingData.forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'message-box';
+        div.innerHTML = `
+          <p><strong>${item.name}</strong> (${item.attendance})</p>
+          <p>${item.message}</p>
+          <hr>
+        `;
+      });
     })
     .catch(err => {
-      alert("Gagal mengirim. Coba lagi nanti.");
-      console.error("Fetch error:", err);
+      console.error("Gagal memuat ucapan", err);
     });
-  } else {
-    alert("Mohon lengkapi semua kolom sebelum mengirim.");
-  }
+}
+
+  loadGuestMessages();
 });
 
 
+const sheetURL = 'https://opensheet.vercel.app/1wqgoT2hOzxHSfQ3gFiEwJ4XjBQ8zHC7TxW8kMTts-qc/Sheet1';
+let rotatingData = [];
+let rotatingIndex = 0;
 
+
+// === Tampilkan ucapan bergantian ===
+function rotateUcapan() {
+  const ucapanDisplay = document.getElementById('ucapan-display');
+  const ucapanContainer = document.getElementById('ucapan-container');
+
+  if (rotatingData.length === 0) {
+    ucapanContainer.classList.add('hidden');
+    return;
+  }
+
+  ucapanContainer.classList.remove('hidden');
+
+  const current = rotatingData[rotatingIndex];
+  ucapanDisplay.innerHTML = `<strong>${current.name}</strong> (${current.attendance}):<br>${current.message}`;
+
+  rotatingIndex = (rotatingIndex + 1) % rotatingData.length;
+
+  setTimeout(rotateUcapan, 4000); // ganti tiap 4 detik
+}
 
 
   // === Smooth Scroll untuk Anchor Link ===
@@ -112,6 +155,7 @@ rsvpForm.addEventListener("submit", function(e) {
     });
   });
 
+  
 
   // === Tombol "Lihat Undangan" & Scroll Control ===
   const lihatUndanganBtn = document.querySelector(".button-gold");

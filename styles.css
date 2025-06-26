@@ -437,7 +437,7 @@ form button:hover {
   font-size: 36px;
   margin-bottom: 30px;
   position: relative;
-  z-index: 6;
+  z-index: 2;
 }
 
 #rsvp-form {

@@ -279,21 +279,25 @@
     <p id="ucapan-display"></p>
   </div>
 
-  <!-- Form RSVP -->
-  <form id="rsvp-form">
+  <form 
+    id="rsvp-form"
+    method="POST" 
+    action="https://script.google.com/macros/s/AKfycbzgit4x94H8Sb3JT_73SeaUl3bShYecaT4AxapO1byWwv-OvbP__ukdpQXM3Yk3TWAbCg/exec"
+  >
     <input type="text" id="nama" name="name" placeholder="Nama Anda" required>
     <textarea id="pesan" name="message" placeholder="Ucapan untuk pengantin" required></textarea>
     <select id="kehadiran" name="attendance" required>
       <option value="">Apakah Anda akan hadir?</option>
-      <option value="yes">Hadir</option>
-      <option value="no">Tidak Hadir</option>
-      <option value="maybe">Ragu-ragu</option>
+      <option value="Hadir">Hadir</option>
+      <option value="Tidak Hadir">Tidak Hadir</option>
+      <option value="Ragu-Ragu">Ragu-ragu</option>
     </select>
     <button type="submit">Kirim</button>
   </form>
 
   <div id="guest-messages"></div>
 </section>
+
 
 
 
